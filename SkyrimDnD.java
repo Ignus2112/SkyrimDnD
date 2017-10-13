@@ -12,14 +12,14 @@ public class SkyrimDnD
 		switch (Responce) 
 		{
 		case 1: 
-			DamagePhase.damageInput();
+			Input.damageInput();
 			 break;
 		case 2: 
-			Blockrating.BlockRatting();
+			Input.blockInput();
 			 break;
 		case 3: 
-			NpcEnemySpwan.doungenLvL();
-			NpcEnemySpwan.enemyMaxLvl();
+			Input.doungenLvL();
+			Input.enemyMaxLvl();
 			NpcEnemySpwan.enemySpwan();
 			break;
 		default: 

@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Random;
 import java.util.Scanner;
-public class NpcEnemySpwan 
+public class NpcEnemySpwan
 {
 	//passed atrubites 
 	static Random rangeX = new Random();
@@ -22,94 +22,25 @@ public class NpcEnemySpwan
 	static String enemyType; 
 	static String enemyRace;
 	//local attubits only 
-	private static int doungenRank=0;
-	private static Scanner sc = new Scanner(System.in); 
+	static int doungenRank=0;
 	// list of races for npc 
 	private static String[] Race= {"High Elf", "Dark Elf", "Wood Elf", "Orc", "Argoninan", "Khajiit", "Breton", "Nord ", "Imperial", "Redguard"};
 	//list of npcs titles 
 	private static String[] enemylist1= {"Hunter","Petty Thief","Bandit","Bandit Cheif","Bandit Ranger","Novice Witch","Novice Mage", 
 			"Novice Fire Mage", "Novice Storm Mage", "Novice Ice Mage" , "Novice Summoner Mage", "Novice Neco Mage", "Novice Illisuon Mage"," Unbound Familer"};
 	
-	private static String[] enemylist2= {"WitchHunter", "Sell Sword","Spell Sword", "Thief","Omega WearBeast", "Vampire", "Apprentince Ice Mage", "Apprentince Fire Mage", 
+	private static String[] enemylist2= {"Battle Healer","WitchHunter", "Sell Sword","Spell Sword", "Thief","Omega WearBeast", "Vampire", "Apprentince Ice Mage", "Apprentince Fire Mage", 
 			"Apprentince Storm Mage", "Apprentince Summoner Mage", "Apprentince Neco Mage", "Apprentince Illison Mage", " Apprentince Witch", " Unbound Flame Atronach "};
 	
-	private static String[] enemylist3= {"NightBlade", "Assassin","Vigil Of Stendar","NightStaker Vampire","Beta WearBeast","Master WitchHunter"," Adept Witch"," Adept Mage", 
-			"Adept Fire Mage", " Adept Storm Mage", " Adept Ice Mage" , "Adept Summoner Mage", "Adept Neco Mage", "Adept Illisuon Mage", };
+	private static String[] enemylist3= {"NightBlade", "Assassin","Vigil Of Stendar","NightStaker Vampire","Beta WearBeast","Master WitchHunter","Adept Witch","Adept Mage", 
+			"Adept Fire Mage", "Adept Storm Mage", "Adept Ice Mage" , "Adept Summoner Mage", "Adept Neco Mage", "Adept Illisuon Mage", };
 	
-	private static String[] enemylist4= {"Master Vampire","Dark Brotherhood Assassin","Nightin Gale "," Hag Raven"," Expert Mage", "Expert Fire Mage", 
+	private static String[] enemylist4= {"Battle Summoner","Battle Mage","Master Vampire","Dark Brotherhood Assassin","Nightin Gale "," Hag Raven"," Expert Mage", "Expert Fire Mage", 
 			"Expert Storm Mage", "Expert Ice Mage" , "Expert Summoner Mage", "Expert Neco Mage", "Expert Illisuon Mage", };
 	
 	private static String[] enemylist5= {"Vampire Lord","Alpha WearBeast"," Bandit Ranger","Damora Lord"," Arch Mage", "Arch Fire Mage", 
 			"Arch Storm Mage", "Arch Ice Mage" , "Arch Summoner Mage", "Arch Neco Mage", "Arch Illisuon Mage", };
 	
-	public static void doungenLvL()
-	{//get the diffculty of the doungen, which decides the range of spwan rate 
-		System.out.println("What is the rank of the doungen");
-		while (doungenRank==0)
-		{
-			doungenRank=sc.nextInt();
-			switch (doungenRank) 
-			{
-			case 1: 
-				numOfEnemies=rangeX.nextInt(11+1-1)+1;
-				break;
-			case 2: 
-				numOfEnemies=rangeX.nextInt(20-10+1)+10;
-				 break;
-			case 3: 
-				numOfEnemies=rangeX.nextInt(30-20+1)+20;
-				break;
-			case 4: 
-				numOfEnemies=rangeX.nextInt(40-30+1)+30;
-				break;
-			case 5: 
-				numOfEnemies=rangeX.nextInt(50-40+1)+40;
-				break;
-			default: 
-				System.out.println("Bad input, try again");
-				 break;
-			}
-		}
-	}
-	public static void enemyMaxLvl()
-	{
-		System.out.println("What is the rank of the enemies for this location?");
-		while (enemyRank==0)
-		{
-			enemyRank=sc.nextInt();
-			switch (enemyRank) 
-			{
-				case 1: 
-					maxEnemyLvL=15;
-					minLVL=1;
-					enemyArmorRatingMax=150;
-					 break;
-				case 2: 
-					maxEnemyLvL=30;
-					minLVL=15;
-					enemyArmorRatingMax=300;
-					 break;
-				case 3: 
-					maxEnemyLvL=45;
-					minLVL=30;
-					enemyArmorRatingMax=400;
-					break;
-				case 4: 
-					maxEnemyLvL=60;
-					minLVL=45;
-					enemyArmorRatingMax=500;
-					break;
-				case 5: 
-					maxEnemyLvL=75;
-					minLVL=60;
-					enemyArmorRatingMax=600;
-					break;
-				default: 
-					System.out.println("Bad input, try again");
-					 break;
-			}
-		}
-	}
 	public static void enemySpwan() throws FileNotFoundException
 	{
 		PrintWriter spwan = new PrintWriter("EnemyThatSpwan.txt");
@@ -193,12 +124,12 @@ public class NpcEnemySpwan
 	public static void enemyTypeSort()
 	{
 		 if (enemyTitle.toLowerCase().contains("vampire".toLowerCase())==true || enemyTitle.toLowerCase().contains("Nightin Gale".toLowerCase())==true || 
-				enemyTitle.toLowerCase().contains("WitchHunter".toLowerCase())==true)
+				enemyTitle.toLowerCase().contains("WitchHunter".toLowerCase())==true || enemyTitle.toLowerCase().contains("NightBlade".toLowerCase())==true)
 		{
 			enemyType="Stealth/Magick";
 		}
 		else if (enemyTitle.toLowerCase().contains("Spell sword".toLowerCase())==true || enemyTitle.toLowerCase().contains("Vigil".toLowerCase())==true
-				|| enemyTitle.toLowerCase().contains("NightBlade".toLowerCase())==true)
+				|| enemyTitle.toLowerCase().contains("Battle".toLowerCase())==true)
 		{
 			enemyType="Combat/Magick";
 		}
@@ -217,7 +148,7 @@ public class NpcEnemySpwan
 			enemyType="Magick";
 		}
 		else if (enemyTitle.toLowerCase().contains("Hunter".toLowerCase())==true || enemyTitle.toLowerCase().contains("Bandit Ranger".toLowerCase())==true || 
-				enemyTitle.toLowerCase().contains("Thief".toLowerCase())==true)
+				enemyTitle.toLowerCase().contains("Thief".toLowerCase())==true || enemyTitle.toLowerCase().contains("Assassin".toLowerCase())==true)
 		{
 			enemyType="Stealth";
 		}
